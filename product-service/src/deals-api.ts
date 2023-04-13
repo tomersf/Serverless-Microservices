@@ -10,7 +10,7 @@ export const handler = async (
   return {
     statusCode: 200,
     body: JSON.stringify({
-      message: "Hello from product service",
+      message: "Hello from deals service",
       path: `${event.path}, ${event.pathParameters}`,
     }),
   };
