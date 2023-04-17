@@ -2,6 +2,7 @@ import { APIGatewayEvent, APIGatewayProxyResult, Context } from "aws-lambda";
 import { ProductRepository } from "./repository/product-repository";
 import { ProductService } from "./service/product-service";
 import { ErrorResponse } from "./utility/response";
+import "./utility";
 
 const service = new ProductService(new ProductRepository());
 
