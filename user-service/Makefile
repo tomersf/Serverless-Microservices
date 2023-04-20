@@ -16,10 +16,13 @@ create-migration:
 server:
 	npm run dev
 
-app: start_db server
+app: start_db migrate server
 
 deploy:
 	npm run deploy
 
-.PHONEY: start_db stop_db server app migrate migrate-down create-migration deploy
+undeploy:
+	npm run delete
+
+.PHONEY: start_db stop_db server app migrate migrate-down create-migration deploy undeploy
 
