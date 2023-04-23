@@ -1,17 +1,45 @@
 # Welcome to your CDK TypeScript project
 
-This is a project for CDK development with TypeScript.
+This is a project for AWS CDK development with TypeScript.
 
-For local development testing need to have:
+####Dependencies:
 
-- Docker
-- AWS CDK
-- AWS SAM
+Docker
+AWS CLI
+AWS CDK
 
-Run:
+```
+$ sudo npm i -g aws-cdk
+```
+
+AWS SAM
+
+### Deployment:
+
+Configure aws credentials with (need IAM User)
+
+```
+$ aws configure
+```
+
+To deploy to AWS:
+
+```
+$ cdk deploy --verbose
+```
+
+### Destory:
+
+```
+$ cdk destory --verbose
+```
+
+### Local Development:
+
+```
+$ npm i
+```
 
 ```
 $ npm run dev
 ```
-
-Should start the server on localhost:3000
