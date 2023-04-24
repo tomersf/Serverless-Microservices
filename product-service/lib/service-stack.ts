@@ -28,7 +28,7 @@ export class ServiceStack extends Construct {
         BUCKET_NAME: props.bucket,
       },
       runtime: Runtime.NODEJS_18_X,
-      timeout: Duration.seconds(10),
+      timeout: Duration.seconds(20),
     };
 
     this.productService = new NodejsFunction(this, "productLambda", {
