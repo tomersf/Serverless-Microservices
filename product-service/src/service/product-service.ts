@@ -1,6 +1,7 @@
 import { APIGatewayEvent } from "aws-lambda";
 import { plainToClass } from "class-transformer";
 import { ProductInput } from "../dto/product-input";
+import { ServiceInput } from "../dto/service-input";
 import { CategoryRepository } from "../repository/category-repository";
 import { ProductRepository } from "../repository/product-repository";
 import { AppValidation } from "../utility/errors";
@@ -66,5 +67,19 @@ export class ProductService {
     });
 
     return SucessResponse(deleteResult);
+  }
+
+  async handleQueueOperation(event: APIGatewayEvent) {
+    const input = plainToClass(ServiceInput, event.body);
+    const error = await AppValidation(input);
+    if (error) return ErrorResponse(404, error);
+
+    console.log("QUEUE INPUT:", input);
+    const { _id, name, price, image_url } =
+      await this._repository.getProductById(input.productId);
+
+    console.log("QUEUE OUTPUT", { _id, name, price, image_url });
+
+    return SucessResponse({ product_id: _id, name, price, image_url });
   }
 }
